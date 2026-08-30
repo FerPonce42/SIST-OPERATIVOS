@@ -31,17 +31,17 @@ sigjmp_buf salto_sigusr2;
 
 
 void handler_sigint(int sigint){
-    printf("Llego la senal SIGINT\n");
+    printf("Llego la senal SIGINT (%d)\n", sigint);
     siglongjmp(salto_sigint, 16);
 }
 
 void handler_sigusr1(int sigusr1){
-    printf("Llego la senal SIGUSR1\n");
+    printf("Llego la senal SIGUSR1(%d)\n", sigusr1);
     siglongjmp(salto_sigusr1, 24);
 }
 
 void handler_sigusr2(int sigusr2){
-    printf("Llego la senal SIGUSR2\n");
+    printf("Llego la senal SIGUSR2(%d)\n", sigusr2);
     siglongjmp(salto_sigusr2, 42);
 }
 
