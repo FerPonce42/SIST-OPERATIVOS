@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <unistd.h> // Necesario para sleep(5)
 //nuevas biblitoecas:
 #include <sys/ipc.h> // para crear la COLA de mensajes.
 #include <sys/msg.h> // funciones para enviar recibir mensaje.
@@ -36,7 +37,7 @@ int main(){
 
         printf("Mensaje recibido [Tipo %ld]: %s\n", mensaje_recepcion.mtype, mensaje_recepcion.texto);
 
-
+        sleep(5);
     }
 
 
