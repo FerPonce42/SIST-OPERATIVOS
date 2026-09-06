@@ -30,7 +30,7 @@ struct MiMensaje{
 sigjmp_buf salto_sigint;
 sigjmp_buf salto_sigusr1;
 
-char * myfifo = "/tmp/ferfifo";
+char * myfifo = "/tmp/fifoLab"; //  aunque yo use --> /tmp/ferfifo, pero en el hipotetico caso de que usted use un script para revisar las tareas,... bueno, ahi esta igual que el doc del lab.
 char buf[1000];
 int fd;
 
