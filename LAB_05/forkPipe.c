@@ -21,6 +21,9 @@ int main(void) {
 
         // CONECTAR: Redirige STDIN (0) al extremo de LECTURA del pipe (pipefd[0])
         dup2(pipefd[0], STDIN_FILENO);
+        //CUALQUIERFILE DESCRITPOR CUALQUEIR APARECERA EN E L STD FILLENO ESTL LO HACE EL HIJO ANTES DE QEU SE EJCUETE EL PGORAMA.
+
+
         close(pipefd[0]); // Ya duplicado, se cierra el original
 
         // REEMPLAZAR HIJO: Ahora ejecuta "cat" (que lee de STDIN, o sea, del pipe)
@@ -50,6 +53,10 @@ PROX SEMANA CONTROL LABORATORIO
 ni idea los temas o tenicaim pero el ahora mismo dice algo de nueva nevatecnica
 
 excevcv() para no se que, algun notiene pipe no se que diablos adsdadada
+
+el pipe escribara en el pipe 0 y lo redirencionar al estandar iinputo del otro proceso ants de que se ejecutres  DUP
+
+
 
 
 */

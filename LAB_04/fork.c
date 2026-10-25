@@ -29,3 +29,6 @@ int main() {
 
     return 0;
 }
+
+
+// execl("/home/julio/P1.exe"," /home/julio/P1.exe",)
