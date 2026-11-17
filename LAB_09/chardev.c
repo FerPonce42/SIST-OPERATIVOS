@@ -66,7 +66,7 @@ MODULE_LICENSE("GPL");
 // AHORA SI LAS FUNCIONES:
 
 // para abrir el modulo:
-static int device_open(struct inode *inode, struct file *file)
+static int device_open(struct inode *inode, struct file *file) // OPEEEEEEEEEEEN PROFEOSR
 {
     static int counter = 0;
 
@@ -74,12 +74,48 @@ static int device_open(struct inode *inode, struct file *file)
         return -EBUSY;
 
     Device_Open++;
-    snprintf(msg, BUF_LEN, "Ya te dije %d veces Hola mundo!\n", counter++);
+    snprintf(msg, BUF_LEN, "Hola soy FERNANDO! y Ya te dije %d veces Hola mundo!\n", counter++);
     msg_Ptr = msg;
     try_module_get(THIS_MODULE);
 
     return SUCCESS;
 }
+
+
+/*
+make clean
+make
+sudo insmod chardev.ko
+sudo dmesg | tail -3
+*/
+
+
+/*
+sudo mknod /dev/chardev c 239 0
+cat /dev/chardev
+cat /dev/chardev
+*/
+
+
+/*
+sudo rmmod chardev
+sudo rm /dev/chardev
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // para retirar el modulo:
 static int device_release(struct inode *inode, struct file *file)
@@ -118,9 +154,9 @@ static ssize_t device_write(struct file *filp, const char __user *buff, size_t l
     char c;
     // 80 max, tons 80 - 1 = 79 para no pasarme y meterel \0 al final.
     for (i = 0; i < len && i < BUF_LEN - 1; i++) {
-        if (get_user(c, buff + i)) // sacar y meter en c
+        if (get_user(c, buff + i)) 
             return -EFAULT;
-        msg[i] = c;// meter en el msg lo que tenemos en c
+        msg[i] = c;
     }
 
     msg[i] = '\0';
@@ -129,6 +165,37 @@ static ssize_t device_write(struct file *filp, const char __user *buff, size_t l
 
     return len; //return a echo
 }
+
+
+
+/*
+sudo sh -c 'echo "hola ucsp" > /dev/chardev'
+*/
+
+/*
+sudo dmesg | tail -3
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+sudo sh -c 'echo "hola ucsp" > /dev/chardev'
+sudo dmesg | tail -3
+*/
 
 
 /*
@@ -157,6 +224,54 @@ para salir
 -----
 
 sudo rmmod chardev
-sudo rm /dev/chardev
 
+*/
+
+
+
+/*
+En el libro hay hola mundo para que peudas trabjar con otros..
+scheduling interrupt eso esta en el coso ese
+
+LIST en el KERNEL DRIVE ahi esta ese  odigo para ver los procesos
+
+
+
+La proxima clase:
+
+TAREA:
+
+programa chiquitito... lo hacen en clase y lo tienen que entragar es como un examen.
+screenshot 
+
+en paralelo
+vamos a los que hicieron el write ym e dicen cual es la diferencia y lo que debeiran haber hecho
+me explican con sus datos.
+
+
+en el control:
+
+CUALQUEIRA DE LAS TECNICAS
+desde signalizacion..
+pipe
+hasta...
+device de caracter.
+
+
+USA EL pipe.. on share memory
+
+o la semafora con tal dispisitovo
+
+
+TIENES QUE VENIR CON TI CODIGO
+tienes que estar familiriarizado
+
+y tener la capacidad dejuntar 2 codigos.
+
+
+individual sin IA :C
+
+
+
+traer el codigo en USB.
 */
